@@ -1,0 +1,67 @@
+<html>
+<head>
+	<title>JUAN VAMP DÍAS DESAPARECIDO</title>
+	<style>
+		body {
+			background-position: center;
+			background-size: 50%;
+			background-repeat: no-repeat;
+			background-color: black;
+		}
+
+		h1 {
+			color: red;
+			font-size: 100px;
+			font-family: 'Bebas Neue', sans-serif;
+			font-weight: bold;
+			text-align: center;
+		}
+
+		p {
+			color: yellow;
+			font-size: 50px;
+			text-transform: uppercase;
+			font-family: 'Bebas Neue', sans-serif;
+			font-weight: bold;
+			text-align: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+	</style>
+	<link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+	<h1>JUAN VAMP DÍAS DESAPARECIDO</h1>
+	<p id="result"><i id="clock-icon" class="fas fa-hourglass-start"></i></p>
+
+	<script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
+	<script>
+		var startDate = new Date(2023, 2, 5); // la fecha de inicio es el 5 de marzo de 2023
+
+		function updateCounter() {
+			var currentDate = new Date();
+
+			var timeDiff = currentDate.getTime() - startDate.getTime(); // tiempo transcurrido en milisegundos
+			var seconds = Math.floor(timeDiff / 1000); // convertir a segundos
+			var minutes = Math.floor(seconds / 60); // convertir a minutos
+			var hours = Math.floor(minutes / 60); // convertir a horas
+			var days = Math.floor(hours / 24); // convertir a días
+			var months = Math.floor(days / 30); // convertir a meses
+
+			// calcular los días, horas, minutos y segundos restantes
+			hours %= 24;
+			minutes %= 60;
+			seconds %= 60;
+			days %= 30;
+
+			// mostrar el resultado en la página web
+			document.getElementById("result").innerHTML = months + " MESES, " + days + " DÍAS, " + hours + " HORAS, " + minutes + " MINUTOS Y " + seconds + " SEGUNDOS.";
+		}
+
+		// actualizar el contador cada segundo
+		setInterval(updateCounter, 1000);
+	</script>
+</body>
+</html>
