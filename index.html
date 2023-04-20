@@ -1,52 +1,94 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title> DIAS QUE NICOLAS ACOSTA LE PIDE PLATA A LEANDRO </title>
-	<style>
-		body {
-			background-color: black;
-		}
-		h1 {
-			color: red;
-			font-size: 70px;
-			font-family: 'Bebas Neue', sans-serif;
-			font-weight: bold;
-			text-align: center;
-		}
-		p {
-			color: white;
-			font-size: 50px;
-			text-transform: uppercase;
-			font-family: 'Bebas Neue', sans-serif;
-			font-weight: bold;
-			text-align: center;
-		}
-	</style>
-	<link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
-</head>
-<body>
-	<h1> DIAS QUE NICOLAS ACOSTA LE PIDE PLATA A LEANDRO </h1>
-	<p id="result"></p>
+  <head>
+    <meta charset="UTF-8">
+    <title>RIVER VS. BOCA</title>
+    <style>
+      body {
+        background-color: black;        
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        
+      }
+      h1 {
+        text-align: center;
+        font-size: 110px;
+        color: white;
+      }
+      .team1 {
+        color: #ff007f;
+        display: inline-block;
+        margin-right: 10px;
+      }
+      .team2 {
+        color: #ff007f;
+        display: inline-block;
+        margin-left: 10px;
+      }
+      .vs {
+        color: white;
+        display: inline-block;
+      }
+      .images {
+        text-align: center;
+        margin-top: 50px;
+      }
+      img {
+        width: 20%;
+        height: auto;
+      }
+      .countdown {
+        text-align: center;
+        font-size: 72px;
+        color: red;
+        margin-top: 60px;
+      }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <h1>
+      <span class="team1">RIVER</span>
+      <span class="vs">VS.</span>
+      <span class="team2">BOCA</span>
+    </h1>
+    <div class="images">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Escudo_del_C_A_River_Plate.svg/1653px-Escudo_del_C_A_River_Plate.svg.png" alt="River">
+      <img src="https://logodownload.org/wp-content/uploads/2016/10/boca-juniors-logo-escudo-1-1.png" alt="Boca">
+    </div>
+    <div class="countdown">
+      <span id="countdown"></span>
+    </div>
+    <script>
+      // Set the date we're counting down to
+      var countDownDate = new Date("May 7, 2023 17:30:00").getTime();
 
-	<script>
-		var startDate = new Date(2023, 3, 13); // la fecha de inicio es el 13 de abril de 2023
-		var currentDate = new Date();
+      // Update the countdown every 1 second
+      var x = setInterval(function() {
 
-		var timeDiff = currentDate.getTime() - startDate.getTime(); // tiempo transcurrido en milisegundos
-		var seconds = Math.floor(timeDiff / 1000); // convertir a segundos
-		var minutes = Math.floor(seconds / 60); // convertir a minutos
-		var hours = Math.floor(minutes / 60); // convertir a horas
-		var days = Math.floor(hours / 24); // convertir a días
-		var months = Math.floor(days / 30); // convertir a meses
+        // Get the current time
+        var now = new Date().getTime();
 
-		// calcular los días, horas, minutos y segundos restantes
-		hours %= 24;
-		minutes %= 60;
-		seconds %= 60;
-		days %= 30;
+        // Calculate the remaining time
+        var distance = countDownDate - now;
 
-		// mostrar el resultado en la página web
-		document.getElementById("result").innerHTML = months + " MESES, " + days + " DÍAS, " + hours + " HORAS, " + minutes + " MINUTOS Y " + seconds + " SEGUNDOS.";
-	</script>
-</body>
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the countdown
+        document.getElementById("countdown").innerHTML = days + "D " + hours + "H "
+        + minutes + "M " + seconds + "S ";
+
+        // If the countdown is over, show "EXPIRED"
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+      }, 1000);
+    </script>
+  </body>
 </html>
